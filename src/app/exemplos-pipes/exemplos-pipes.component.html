@@ -1,0 +1,27 @@
+<p>Informações do Livro</p>
+
+<p>Editora : {{ livro.titulo | uppercase | lowercase | camelCase}}</p>
+<p>Avaliações dos clientes: {{ livro.rating | number:'1.1-1' }}</p>
+<p>Número de páginas : {{ livro.paginas | number }}</p>
+<p>Preço : {{ livro.preco | currency:'BRL':true }}</p>
+<p>Data do Lançamento : {{ livro.dataLancamento | date }}</p>
+<p>URL : {{ livro.url }}</p>
+
+<br> 
+
+<p>{{ livro | json }}</p>
+
+<input type="text" [(ngModel)]="filtro" >
+
+<br>
+
+<input type="text" #novoValor >
+
+<button (click)="addCurso(novoValor.value)">Add Curso</button>
+
+<ul>
+    <!-- DISCLAIMER: PIPE USED HERE ONLY FOR TEST -->
+    <li *ngFor="let liv of livros  | filtroArray: filtro"> 
+        {{ liv }}
+    </li>
+</ul>
